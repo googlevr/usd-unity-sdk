@@ -301,6 +301,7 @@
     <Content Include="pxr\usd\usd\usdModelApi.i" />
     <Content Include="pxr\usd\usd\usdPayloads.i" />
     <Content Include="pxr\usd\usd\usdResolveInfo.i" />
+    <Content Include="pxr\usd\usd\usdStageLoadRules.i" />
     <Content Include="pxr\usd\usd\usdStagePopulationMask.i" />
     <Content Include="pxr\usd\usd\usdStageCache.i" />
     <Content Include="pxr\usd\usd\usdCommon.i" />

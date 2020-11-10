@@ -435,6 +435,9 @@
     <Compile Include="generated\pxr\usd\usd\UsdStageCache.cs" />
     <Compile Include="generated\pxr\usd\usd\UsdStageCacheRequest.cs" />
     <Compile Include="generated\pxr\usd\usd\UsdStageCacheResultPair.cs" />
+    <Compile Include="generated\pxr\usd\usd\UsdStageLoadRules.cs" />
+    <Compile Include="generated\pxr\usd\usd\UsdStageLoadRulesPair.cs" />
+    <Compile Include="generated\pxr\usd\usd\UsdStageLoadRulesVectorPair.cs" />
     <Compile Include="generated\pxr\usd\usd\UsdStagePopulationMask.cs" />
     <Compile Include="generated\pxr\usd\usd\UsdStageRefPtrVector.cs" />
     <Compile Include="generated\pxr\usd\usd\UsdStageWeakPtr.cs" />

@@ -3507,6 +3507,17 @@ public class UsdCs {
     if (UsdCsPINVOKE.SWIGPendingException.Pending) throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
   }
 
+  public static uint hash_value(UsdStageLoadRules arg0) {
+    uint ret = UsdCsPINVOKE.hash_value__SWIG_61(UsdStageLoadRules.getCPtr(arg0));
+    if (UsdCsPINVOKE.SWIGPendingException.Pending) throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static void swap(UsdStageLoadRules l, UsdStageLoadRules r) {
+    UsdCsPINVOKE.swap__SWIG_10(UsdStageLoadRules.getCPtr(l), UsdStageLoadRules.getCPtr(r));
+    if (UsdCsPINVOKE.SWIGPendingException.Pending) throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
+  }
+
   public static bool UsdIsSubtype(UsdObjType baseType, UsdObjType subType) {
     bool ret = UsdCsPINVOKE.UsdIsSubtype((int)baseType, (int)subType);
     return ret;
@@ -3523,7 +3534,7 @@ public class UsdCs {
   }
 
   public static uint hash_value(UsdObject obj) {
-    uint ret = UsdCsPINVOKE.hash_value__SWIG_61(UsdObject.getCPtr(obj));
+    uint ret = UsdCsPINVOKE.hash_value__SWIG_62(UsdObject.getCPtr(obj));
     if (UsdCsPINVOKE.SWIGPendingException.Pending) throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -3540,7 +3551,7 @@ public class UsdCs {
   }
 
   public static uint hash_value(UsdGeomPrimvar obj) {
-    uint ret = UsdCsPINVOKE.hash_value__SWIG_62(UsdGeomPrimvar.getCPtr(obj));
+    uint ret = UsdCsPINVOKE.hash_value__SWIG_63(UsdGeomPrimvar.getCPtr(obj));
     if (UsdCsPINVOKE.SWIGPendingException.Pending) throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -3557,13 +3568,13 @@ public class UsdCs {
   }
 
   public static uint hash_value(UsdSkelAnimQuery query) {
-    uint ret = UsdCsPINVOKE.hash_value__SWIG_63(UsdSkelAnimQuery.getCPtr(query));
+    uint ret = UsdCsPINVOKE.hash_value__SWIG_64(UsdSkelAnimQuery.getCPtr(query));
     if (UsdCsPINVOKE.SWIGPendingException.Pending) throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public static uint hash_value(UsdSkelSkeletonQuery query) {
-    uint ret = UsdCsPINVOKE.hash_value__SWIG_64(UsdSkelSkeletonQuery.getCPtr(query));
+    uint ret = UsdCsPINVOKE.hash_value__SWIG_65(UsdSkelSkeletonQuery.getCPtr(query));
     if (UsdCsPINVOKE.SWIGPendingException.Pending) throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
