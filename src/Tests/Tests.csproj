@@ -109,10 +109,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\USD.NET.Unity\USD.NET.Unity.csproj">
-      <Project>{0563652b-6e9c-43b8-bf51-944065757974}</Project>
-      <Name>USD.NET.Unity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\USD.NET\USD.NET.csproj">
       <Project>{7706d7ac-a3ab-436a-a6eb-8c08b42d9a44}</Project>
       <Name>USD.NET</Name>
