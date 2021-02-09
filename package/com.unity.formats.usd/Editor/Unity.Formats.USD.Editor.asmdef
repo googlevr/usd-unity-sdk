@@ -1,7 +1,8 @@
 {
     "name": "Unity.Formats.USD.Editor",
     "references": [
-        "Unity.Formats.USD.Runtime"
+        "Unity.Formats.USD.Runtime",
+        "USD.NET.Unity"
     ],
     "includePlatforms": [
         "Editor"

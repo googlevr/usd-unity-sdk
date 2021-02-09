@@ -11,32 +11,29 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+using NUnit.Framework;
 using System;
 using System.Linq;
-using USD.NET.Unity;
-using System.Collections.Generic;
-using NUnit.Framework;
-using USD.NET.Unity.Tests;
+using UnityEngine;
 
 namespace USD.NET.Unity.Tests {
-  class InstancingTests : UsdTests {
-
-      [Test]
-    public static void TraversalTest() {
-      var scene = USD.NET.Scene.Open(@"D:\usd\Kitchen_set.usd");
+  class InstancingTests : UsdTests 
+  {
+    [Test]
+    public void TraversalTest() {
+      var scene = USD.NET.Scene.Open(@"D:\usd_assets\Kitchen_set.usd");
 
       foreach (pxr.UsdPrim prim in scene.Stage.Traverse()) {
         var mesh = new pxr.UsdGeomMesh(prim);
         if (mesh) {
-          Console.WriteLine("Non-instanced mesh: " + prim.GetPath());
+          Debug.Log("Non-instanced mesh: " + prim.GetPath());
         }
 
         //
         // See if this is instanced.
         //
         if (prim.IsInstance()) {
-          Console.WriteLine("Instanced prim: " + prim.GetPath() + "\n\tMaster: " + prim.GetMaster().GetPath());
+          Debug.Log("Instanced prim: " + prim.GetPath() + "\n\tMaster: " + prim.GetMaster().GetPath());
 
           //
           // Now traverse the master.
@@ -45,7 +42,7 @@ namespace USD.NET.Unity.Tests {
           foreach (pxr.UsdPrim masterPrim in master.GetAllDescendants()) {
             var masterMesh = new pxr.UsdGeomMesh(masterPrim);
             if (masterMesh) {
-              Console.WriteLine("\tMaster mesh: " + masterPrim.GetPath());
+              Debug.Log("\tMaster mesh: " + masterPrim.GetPath());
             }
           }
         }
@@ -53,7 +50,7 @@ namespace USD.NET.Unity.Tests {
     }
 
     [Test]
-    public static void CreatePointInstancerManualTest() {
+    public void CreatePointInstancerManualTest() {
       var scene = USD.NET.Scene.Create();
       var stageWeakRef = new pxr.UsdStageWeakPtr(scene.Stage);
       var pi = pxr.UsdGeomPointInstancer.Define(stageWeakRef, new pxr.SdfPath("/Instancer"));
@@ -86,7 +83,7 @@ namespace USD.NET.Unity.Tests {
       pi.ComputeInstanceTransformsAtTime(xforms, time: 1.0, baseTime: 0.0);
 
       for (int i = 0; i < xforms.size(); i++) {
-        Console.WriteLine(xforms[i]);
+        Debug.Log(xforms[i]);
       }
     }
 
@@ -104,7 +101,7 @@ namespace USD.NET.Unity.Tests {
         var pi = new pxr.UsdGeomPointInstancer(prim);
         var xforms = new pxr.VtMatrix4dArray();
 
-        pi.ComputeInstanceTransformsAtTime(xforms, scene.Time == null ? pxr.UsdTimeCode.Default() : scene.Time, 0);
+        pi.ComputeInstanceTransformsAtTime(xforms, scene.Time == null ? pxr.UsdTimeCode.Default() : scene.Time, pxr.UsdTimeCode.Default());
 
         // Slow, but works.
         var matrices = new UnityEngine.Matrix4x4[xforms.size()];
@@ -141,9 +138,9 @@ namespace USD.NET.Unity.Tests {
 
       var matrices = piSample.ComputeInstanceMatrices(scene, "/Instancer");
 
-      Console.WriteLine(String.Join(",", matrices.Select(p => p.ToString()).ToArray()));
-      Console.WriteLine(String.Join(",", piSample.prototypes.targetPaths.Select(p => p.ToString()).ToArray()));
-      Console.WriteLine(String.Join(",", piSample.protoIndices.Select(p => p.ToString()).ToArray()));
+      Debug.Log(String.Join(",", matrices.Select(p => p.ToString()).ToArray()));
+      Debug.Log(String.Join(",", piSample.prototypes.targetPaths.Select(p => p.ToString()).ToArray()));
+      Debug.Log(String.Join(",", piSample.protoIndices.Select(p => p.ToString()).ToArray()));
     }
 
   }

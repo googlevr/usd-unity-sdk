@@ -18,8 +18,8 @@ using USD.NET.Unity;
 
 [System.Serializable]
 [UsdSchema("UsdGeomXformable")]
-class XformableQuery : SampleBase {
-  public XformableQuery() {
+class XformableSample : SampleBase {
+  public XformableSample() {
   }
 }
 
@@ -35,27 +35,25 @@ namespace Tests.Cases {
 
     public static void BasicTest() {
 
-      var cubeSample = new CubeSample();
-      var meshSample = new MeshSample();
-      meshSample.visibility = Visibility.Invisible;
+      var xform1Sample = new XformableSample();
+      var xform2Sample = new XformableSample();
       var scene = Scene.Create();
 
-      scene.Write("/Root/Cube", cubeSample);
-      scene.Write("/Root/Mesh", meshSample);
-      scene.Write("/Root/Mesh2", meshSample);
+      scene.Write("/Root/Xform1", xform1Sample);
+      scene.Write("/Root/Xform2", xform2Sample);
 
-      foreach (var mesh in scene.ReadAll<XformableQuery>(rootPath:"/Root")) {
-        Console.WriteLine("ReadAll Test: " + mesh.path);
+      foreach (var xformables in scene.ReadAll<XformableSample>(rootPath:"/Root")) {
+        Console.WriteLine("ReadAll Test: " + xforms.path);
       }
 
-      foreach (var path in scene.Find<XformableQuery>(rootPath: "/Root")) {
+      foreach (var path in scene.Find<XformableSample>(rootPath: "/Root")) {
         Console.WriteLine("Find Test: " + path);
       }
 
       try {
         Util.DiagnosticHandler.Instance.LastError = null;
 
-        foreach (var mesh in scene.ReadAll<XformableQuery>(rootPath: "/Bogus/Root/Path")) {
+        foreach (var xformables in scene.ReadAll<XformableSample>(rootPath: "/Bogus/Root/Path")) {
           Console.WriteLine("Query Test: " + mesh.path);
         }
 
@@ -89,8 +87,6 @@ namespace Tests.Cases {
       } catch (ApplicationException ex) {
         Console.WriteLine("Caught expected exception: " + ex.Message);
       }
-
-
     }
 
   }

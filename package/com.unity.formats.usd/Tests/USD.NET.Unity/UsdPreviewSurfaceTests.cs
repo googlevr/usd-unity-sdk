@@ -22,7 +22,7 @@ using UnityEngine;
 namespace USD.NET.Unity.Tests {
   class UsdPreviewSurfaceTests : UsdTests {
 
-      [Test]
+    [Test]
     public static void ReadWriteTest() {
 
       // Game plan:

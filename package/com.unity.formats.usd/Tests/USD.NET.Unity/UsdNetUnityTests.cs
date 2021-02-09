@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using NUnit.Framework;
+using Unity.Formats.USD;
+using UnityEngine;
 
 namespace USD.NET.Unity.Tests
 {
-    class UsdTests
+    public class UsdTests
     {
         [SetUp]
         public void SetUp()
@@ -57,7 +59,7 @@ namespace USD.NET.Unity.Tests
             scene2.Close();
 
             AssertTrue(varMap.Included.Count == 0);
-            Console.WriteLine("Expected zero dynamic prims and members: success.");
+            Debug.Log("Expected zero dynamic prims and members: success.");
 
             System.IO.File.Delete(filename);
 
@@ -80,7 +82,7 @@ namespace USD.NET.Unity.Tests
             scene2.Close();
 
             AssertTrue(varMap.Included.Count == 0);
-            Console.WriteLine("Expected zero dynamic prims and members: success.");
+            Debug.Log("Expected zero dynamic prims and members: success.");
             System.IO.File.Delete(filename);
 
             // ----------------------------------------------- //
@@ -106,7 +108,7 @@ namespace USD.NET.Unity.Tests
 
             // Still expect nothing dynamic, since varMap was never populated.
             AssertTrue(varMap.Included.Count == 0);
-            Console.WriteLine("Expected zero dynamic prims and members: success.");
+            Debug.Log("Expected zero dynamic prims and members: success.");
 
             scene2.IsPopulatingAccessMask = true;
             scene2.AccessMask = varMap;
@@ -120,13 +122,13 @@ namespace USD.NET.Unity.Tests
             scene2.Read(new pxr.SdfPath("/Foo"), outputSample);
             scene2.Close();
 
-            Console.WriteLine("(Expect only </Foo>)");
+            Debug.Log("(Expect only </Foo>)");
             foreach (var pathAndMembers in varMap.Included)
             {
-                Console.WriteLine("  Dynamic Members: " + pathAndMembers.Key);
+                Debug.Log("  Dynamic Members: " + pathAndMembers.Key);
                 foreach (var memberInfo in pathAndMembers.Value)
                 {
-                    Console.WriteLine("    ." + memberInfo.Name);
+                    Debug.Log("    ." + memberInfo.Name);
                 }
             }
 
@@ -190,14 +192,14 @@ namespace USD.NET.Unity.Tests
             scene2.Read(new pxr.SdfPath("/Foo/Bar"), barSample);
             scene2.Close();
 
-            Console.WriteLine("");
-            Console.WriteLine("(Expect only </Foo/Bar>)");
+            Debug.Log("");
+            Debug.Log("(Expect only </Foo/Bar>)");
             foreach (var pathAndMembers in varMap.Included)
             {
-                Console.WriteLine("  Dynamic Members: " + pathAndMembers.Key);
+                Debug.Log("  Dynamic Members: " + pathAndMembers.Key);
                 foreach (var memberInfo in pathAndMembers.Value)
                 {
-                    Console.WriteLine("    ." + memberInfo.Name);
+                    Debug.Log("    ." + memberInfo.Name);
                 }
             }
 
@@ -242,7 +244,7 @@ namespace USD.NET.Unity.Tests
         {
             string layer;
             scene.Stage.ExportToString(out layer, addSourceFileComment: false);
-            Console.WriteLine(layer);
+            Debug.Log(layer);
         }
 
         static protected string GetTempFile(string extension = "usd")

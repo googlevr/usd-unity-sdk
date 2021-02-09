@@ -12,14 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Collections.Generic;
-using USD.NET;
-using USD.NET.Unity;
+using NUnit.Framework;
 
-namespace Tests.Cases {
-  class OverrideTests : UnitTest {
 
+namespace USD.NET.Unity.Tests {
+  class OverrideTests : UsdTests {
+
+    [Test]
     public static void WriteToOverTest() {
 
       var cubeSample = new CubeSample();
@@ -43,6 +42,7 @@ namespace Tests.Cases {
       PrintScene(sceneOver);
     }
 
+    [Test]
     public static void WriteToUnderTest() {
 
       // Create the base scene layer.
@@ -79,6 +79,7 @@ namespace Tests.Cases {
     }
 
 
+    [Test]
     public static void WriteOverOnlyTest() {
 
       // Create the base scene layer.

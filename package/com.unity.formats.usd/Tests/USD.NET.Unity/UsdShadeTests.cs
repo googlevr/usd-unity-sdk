@@ -28,7 +28,7 @@ namespace USD.NET.Unity.Tests {
     /// Read and write materials with as little code as possible.
     /// </summary>
     [Test]
-    public static void MaterialIoTest() {
+    public void MaterialIoTest() {
       var scene = Scene.Create();
       scene.Write("/Model/Geom/Cube", new CubeSample(1.0));
       scene.Write("/Model/Geom/Cube", new MaterialBindingSample("/Model/Materials/SampleMat"));
@@ -52,7 +52,7 @@ namespace USD.NET.Unity.Tests {
     }
 
     [Test]
-    public static void MaterialBindTest() {
+    public void MaterialBindTest() {
       // Game plan:
       //   1. Create a cube
       //   2. Create a material
